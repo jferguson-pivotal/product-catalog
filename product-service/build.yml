@@ -8,6 +8,10 @@ image_resource:
 
 inputs:
   - name: source-code
+  
+outputs:
+  - name: product-service-artifacts
+    path: target
 
 run:
   path: "source-code/product-service/mvnw"
