@@ -11,7 +11,7 @@ inputs:
   
 outputs:
   - name: product-service-artifacts
-    path: target
+    path: source-code/product-service/target
 
 run:
   path: "source-code/product-service/mvnw"
