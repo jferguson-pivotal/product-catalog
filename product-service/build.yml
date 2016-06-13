@@ -19,3 +19,4 @@ run:
 params:
   MAVEN_BASEDIR: source-code/product-service
 
+
