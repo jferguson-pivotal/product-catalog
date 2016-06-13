@@ -11,11 +11,10 @@ inputs:
   
 outputs:
   - name: product-service-artifacts
-    path: source-code/product-service/target
 
 run:
   path: "source-code/product-service/mvnw"
-  args: ["-f", "source-code/product-service/pom.xml", "package"]
+  args: ["-f", "source-code/product-service/pom.xml", "package", "-DoutputDirectory=../../product-service-artifacts/"]
 
 params:
   MAVEN_BASEDIR: source-code/product-service
