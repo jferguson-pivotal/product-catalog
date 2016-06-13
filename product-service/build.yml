@@ -14,7 +14,7 @@ outputs:
 
 run:
   path: "source-code/product-service/mvnw"
-  args: ["-f", "source-code/product-service/pom.xml", "package", "-DoutputDirectory=../../product-service-artifacts/"]
+  args: ["-f", "source-code/product-service/pom.xml", "package", "-DoutputDir=../../product-service-artifacts/"]
 
 params:
   MAVEN_BASEDIR: source-code/product-service
