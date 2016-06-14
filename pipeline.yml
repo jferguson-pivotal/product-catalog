@@ -2,12 +2,12 @@ resources:
   - name: source-code
     type: git
     source:
-      uri: https://github.com/colrich/product-catalog.git
+      uri: {{git-repo}}
       branch: buildsystem
   - name: deploy-service
     type: cf
     source:
-      api: https://api.run.pez.pivotal.io
+      api: {{cf-api}}
       username: {{cf-user}}
       password: {{cf-pass}}
       organization: {{cf-org}}
