@@ -1,0 +1,5 @@
+---
+applications:
+- name: JRC-ProductUi
+  memory: 512M
+  instances: 2
