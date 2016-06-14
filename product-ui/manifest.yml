@@ -3,3 +3,6 @@ applications:
 - name: JRC-ProductUi
   memory: 512M
   instances: 2
+  services:
+    - JRC-Eureka
+

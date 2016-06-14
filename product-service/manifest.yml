@@ -3,3 +3,5 @@ applications:
 - name: JRC-ProductService
   memory: 512M
   instances: 2
+  services: 
+    - JRC-Eureka

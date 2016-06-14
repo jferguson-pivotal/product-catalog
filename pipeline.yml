@@ -2,16 +2,16 @@ resources:
   - name: source-code
     type: git
     source:
-      uri: {{git-repo}}
-      branch: buildsystem
+      uri: {{GIT_REPO}}
+      branch: {{GIT_REPO_BRANCH}}
   - name: deploy-service
     type: cf
     source:
-      api: {{cf-api}}
-      username: {{cf-user}}
-      password: {{cf-pass}}
-      organization: {{cf-org}}
-      space: {{cf-space}}
+      api: {{CF_API}}
+      username: {{CF_USER}}
+      password: {{CF_PASS}}
+      organization: {{CF_ORG}}
+      space: {{CF_SPACE}}
       skip_cert_check: true
 
 jobs:
@@ -19,6 +19,16 @@ jobs:
     plan:
     - get: source-code
       trigger: true
+    - task: create-services
+      privileged: true
+      file: source-code/create-services.yml
+      params:
+        CF_API: {{CF_API}}
+        CF_USER: {{CF_USER}}
+        CF_PASS: {{CF_PASS}}
+        CF_ORG:  {{CF_ORG}}
+        CF_SPACE: {{CF_SPACE}}
+        JRC_EUREKA: {{JRC_EUREKA}}
     - task: package
       privileged: true
       file: source-code/product-service/build.yml
@@ -30,6 +40,16 @@ jobs:
     plan:
     - get: source-code
       trigger: true
+    - task: create-services
+      privileged: true
+      file: source-code/create-services.yml
+      params:
+        CF_API: {{CF_API}}
+        CF_USER: {{CF_USER}}
+        CF_PASS: {{CF_PASS}}
+        CF_ORG:  {{CF_ORG}}
+        CF_SPACE: {{CF_SPACE}}
+        JRC_EUREKA: {{JRC_EUREKA}}
     - task: package
       privileged: true
       file: source-code/photo-service/build.yml
@@ -41,6 +61,16 @@ jobs:
     plan:
     - get: source-code
       trigger: true
+    - task: create-services
+      privileged: true
+      file: source-code/create-services.yml
+      params:
+        CF_API: {{CF_API}}
+        CF_USER: {{CF_USER}}
+        CF_PASS: {{CF_PASS}}
+        CF_ORG:  {{CF_ORG}}
+        CF_SPACE: {{CF_SPACE}}
+        JRC_EUREKA: {{JRC_EUREKA}}
     - task: package
       privileged: true
       file: source-code/product-ui/build.yml
@@ -48,3 +78,4 @@ jobs:
       params:
         manifest: source-code/product-ui/manifest.yml
         path: product-ui-artifacts/product-ui-0.0.1-SNAPSHOT.jar
+
