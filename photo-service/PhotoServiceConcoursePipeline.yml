@@ -1,0 +1,36 @@
+---
+resources:
+
+- name: PhotoServiceRepo1
+  type: git
+  source:
+    uri: git@github.com:reagul/product-catalog.git
+    private_key: {{github-private-key}}
+    branch: master
+- name: PhotoService-CF-Deploy
+  type: cf
+  #params:
+    #manifest: manifest.yml
+    #path: Concourse1
+    # fly -t lite set-pipeline -p PhotoService -c PhotoServiceConcoursePipeline.yml --load-vars-from  ~/Documents/gitcreds.yml
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true
+jobs:
+- name: Build-PhotoService
+  serial: true
+
+  plan:
+  - get: PhotoServiceRepo1
+    trigger: true
+
+  - task: Build-PhotoService
+    file: PhotoServiceRepo1/photo-service/BuildPhotoService.yml
+
+  - put: PhotoService-CF-Deploy
+    params:
+      manifest: PhotoServiceRepo1/photo-service/manifest.yml
