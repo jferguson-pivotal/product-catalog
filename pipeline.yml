@@ -1,0 +1,50 @@
+resources:
+  - name: source-code
+    type: git
+    source:
+      uri: {{git-repo}}
+      branch: buildsystem
+  - name: deploy-service
+    type: cf
+    source:
+      api: {{cf-api}}
+      username: {{cf-user}}
+      password: {{cf-pass}}
+      organization: {{cf-org}}
+      space: {{cf-space}}
+      skip_cert_check: true
+
+jobs:
+  - name: package-product-service
+    plan:
+    - get: source-code
+      trigger: true
+    - task: package
+      privileged: true
+      file: source-code/product-service/build.yml
+    - put: deploy-service
+      params: 
+        manifest: source-code/product-service/manifest.yml
+        path: product-service-artifacts/product-service-0.0.1-SNAPSHOT.jar
+  - name: package-photo-service
+    plan:
+    - get: source-code
+      trigger: true
+    - task: package
+      privileged: true
+      file: source-code/photo-service/build.yml
+    - put: deploy-service
+      params:
+        manifest: source-code/photo-service/manifest.yml
+        path: photo-service-artifacts/photo-service-0.0.1-SNAPSHOT.jar
+  - name: package-product-ui
+    plan:
+    - get: source-code
+      trigger: true
+    - task: package
+      privileged: true
+      file: source-code/product-ui/build.yml
+    - put: deploy-service
+      params:
+        manifest: source-code/product-ui/manifest.yml
+        path: product-ui-artifacts/product-ui-0.0.1-SNAPSHOT.jar

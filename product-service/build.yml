@@ -1,0 +1,22 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: airdock/oracle-jdk
+    tag: latest
+
+inputs:
+  - name: source-code
+  
+outputs:
+  - name: product-service-artifacts
+
+run:
+  path: "source-code/product-service/mvnw"
+  args: ["-f", "source-code/product-service/pom.xml", "package", "-DoutputDir=../../product-service-artifacts/"]
+
+params:
+  MAVEN_BASEDIR: source-code/product-service
+
+
