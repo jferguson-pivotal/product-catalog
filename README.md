@@ -9,11 +9,11 @@ vagrant up
 fly -t lite login -c http://192.168.100.4:8080  
   
 create a file in the root of this repo called cf-env.yml that contains:  
-git-repo: <repo url>  
-cf-user: <your user>  
-cf-pass: <your pass>  
-cf-org: <your org>  
-cf-space: <your space>  
+git-repo: {repo url}  
+cf-user: {your user}  
+cf-pass: {your pass}  
+cf-org: {your org}  
+cf-space: {your space}  
   
 fly -t lite set-pipeline -p product-catalog -c pipeline.yml --load-vars-from cf-env.yml  
   
