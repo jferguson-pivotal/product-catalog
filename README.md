@@ -26,7 +26,7 @@ Because who doesn't like a product?
 
 **Set the pipeline in Concourse**
 ```javascript
-7.fly -t lite set-pipeline -p product-catalog -c pipeline.yml --load-vars-from git-creds.yml .Note the "-t lite".
+7.fly -t lite set-pipeline -p product-catalog -c pipeline.yml --load-vars-from git-creds.yml
 ```
 This sets the alias name "lite" to be reused in subsequent fly commands with the -t option. 
   
