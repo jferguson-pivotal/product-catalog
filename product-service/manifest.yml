@@ -1,5 +1,5 @@
 ---
 applications:
-- name: JRC-ProductService
+- name: product-serviceRJ
   memory: 512M
-  instances: 2
+  instances: 1
