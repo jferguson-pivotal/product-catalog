@@ -7,8 +7,6 @@ asciidoctor.css
 target/
 build/
 bin/
-RemoteSystemsTempFiles/
-Servers/
 _site/
 .classpath
 .project
@@ -23,4 +21,3 @@ _site/
 .factorypath
 .apt_generated
 artifacts
-cf-env.yml
