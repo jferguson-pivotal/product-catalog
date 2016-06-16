@@ -1,0 +1,15 @@
+github-private-key: |-
+  -----BEGIN RSA PRIVATE KEY-----
+  MIIEowIBAAKCAQEAxXitrvnv0hwxvabNRqtBhrK5lzxDS7zEUCGAm4SCQNKIVMJ6
+  usDRkLFShRycL1+3MNIiQ9cC52NqGgKUu7y7jgCVvbciE+140VPbM2pBXtExfFdQ
+  ADsz5iLbh3uKeFuGX8en5LjwdRkGTtRogmcY25vfmfAHdFSf3KSDe1rNEI902XXP
+  2m/DsR6mQ/Lg9d1OfDaBkTA+qnZS7bQycAHw20vDeSXT4Z/Q1Z1O9BVxI3nysiDH
+  ivtMbV8jW0l6zxx6cY2oeIdh92xTEEJ9PfFoOce2zFYZgs1hlht3TohzI+3lng8W
+  CzG5mpw0VcOv+CVlli51n2Da3s3WpGYhGrTOaQIDAQABAoIBAQCT5XpPnqnbN3qZ
+  UKrEnuMSppNlhgFl4IZmXgmqk+fPPa/IRwrMjKaNKEjJ+maIr0jo
+  -----END RSA PRIVATE KEY-----
+cf-api: https://api.run.pivotal.io
+cf-username: nathan@pivotal.io
+cf-password: johndoex3
+cf-organization: Northeast / Canada
+cf-space: rJag
