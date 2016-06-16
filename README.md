@@ -6,15 +6,14 @@ Because who doesn't like a product?
 
 **Each sub-directory here ** has a yml file that defines the Concourse Pipeline.
 
-Start the Concourse app like this 
+**Start the Concourse app like this** 
 
 1. vagrant init concourse/lite  
 2. vagrant up  
-
 3. Access http://192.168.100.4:8080 and click on the fly cli to download locally
 4. On mac place it under bin 
 
-Target the Concourse endpoint on cli using Fly 
+**Target the Concourse endpoint on cli using Fly** 
 
 5. fly -t lite login -c http://192.168.100.4:8080  
 
