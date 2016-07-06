@@ -1,6 +1,12 @@
-package io.pivotal.product.catalog;
+package io.pivotal.product.PhotoService;
 
 import org.springframework.boot.SpringApplication;
+
+/**
+ * Author: "John Vision Ferguson" 
+ * Pivot: "Ravi Jagannathan"
+ *
+ */
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

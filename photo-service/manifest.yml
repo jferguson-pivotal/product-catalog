@@ -1,8 +1,5 @@
 ---
 applications:
-- name: JRC-PhotoService
+- name: photo-serviceRJ
   memory: 512M
-  instances: 2
-  services:
-    - JRC-Eureka
-
+  instances: 1

@@ -1,0 +1,37 @@
+---
+resources:
+
+- name: ProductServiceRepo1
+  type: git
+  source:
+    uri: git@github.com:reagul/product-catalog.git
+    private_key: {{github-private-key}}
+    branch: master
+- name: ProductService-CF-Deploy
+  type: cf
+  #params:
+    #manifest: manifest.yml
+    #path: Concourse1
+    # fly -t lite set-pipeline -p PhotoService -c PhotoServiceConcoursePipeline.yml --load-vars-from  ~/Documents/gitcreds.yml
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true
+jobs:
+- name: Build-ProductService
+  serial: true
+
+  plan:
+  - get: ProductServiceRepo1
+    trigger: true
+
+  - task: Build-ProductService
+    file: ProductServiceRepo1/product-service/BuildProductService.yml
+
+  - put: ProductService-CF-Deploy
+    params:
+      manifest: ProductServiceRepo1/product-service/manifest.yml
+      path: jar-file/product-service-0.0.1-SNAPSHOT.jar
