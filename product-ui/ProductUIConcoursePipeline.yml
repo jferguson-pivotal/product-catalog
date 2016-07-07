@@ -20,6 +20,15 @@ resources:
     organization: {{cf-organization}}
     space: {{cf-space}}
     skip_cert_check: true
+
+- name: ProductUIService-S3-Test-Release-Bucket
+  type: s3
+  source:
+    bucket: {{ProductUIService-S3-Test-Release-Bucket}}
+    regexp: product-ui-service-(.*).jar
+    access_key_id: {{ProductUIService-s3-access-key-id}}
+    secret_access_key: {{ProductUIService-s3-secret}}
+    endpoint: {{ProductUIService-s3-endpoint}}
 jobs:
 - name: Build-ProductUI
   serial: true
@@ -30,6 +39,10 @@ jobs:
 
   - task: Build-ProductUI
     file: ProductUIRepo1/product-ui/BuildProductUI.yml
+
+  - put: ProducUIService-S3-Test-Release-Bucket
+    params:
+      file: jar-file/productui-service-*.jar
 
   - put: ProductUI-CF-Deploy
     params:

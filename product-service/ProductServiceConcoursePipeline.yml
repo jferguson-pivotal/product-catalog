@@ -20,6 +20,15 @@ resources:
     organization: {{cf-organization}}
     space: {{cf-space}}
     skip_cert_check: true
+
+- name: ProductService-S3-Test-Release-Bucket
+  type: s3
+  source:
+    bucket: {{ProductService-S3-Test-Release-Bucket}}
+    regexp: product-service-(.*).jar
+    access_key_id: {{ProductService-s3-access-key-id}}
+    secret_access_key: {{ProductService-s3-secret}}
+    endpoint: {{ProductService-s3-endpoint}}
 jobs:
 - name: Build-ProductService
   serial: true

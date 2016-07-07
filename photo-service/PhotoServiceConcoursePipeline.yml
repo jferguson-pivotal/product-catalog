@@ -51,7 +51,7 @@ jobs:
 
   - put: PhotoService-S3-Test-Release-Bucket
     params:
-      file: photo-service-*.jar
+      file: jar-file/photo-service-*.jar
 
   - put: PhotoService-CF-Deploy
     params:
