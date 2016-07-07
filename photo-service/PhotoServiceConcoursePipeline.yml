@@ -10,7 +10,7 @@ resources:
 - name: PhotoService-CF-Deploy
   type: cf
   #params:
-    
+
     #path: Concourse1
     # fly -t lite set-pipeline -p PhotoService -c PhotoServiceConcoursePipeline.yml --load-vars-from  ~/Documents/gitcreds.yml
   source:
@@ -20,6 +20,24 @@ resources:
     organization: {{cf-organization}}
     space: {{cf-space}}
     skip_cert_check: true
+- name: PhotoService-S3-Test-Release-Bucket
+  type: s3
+  source:
+    bucket: {{PhotoService-S3-Test-Release-Bucket}}
+    regexp: photo-service-(.*).jar
+    access_key_id: {{PhotoService-s3-access-key-id}}
+    secret_access_key: {{PhotoService-s3-secret}}
+    endpoint: {{PhotoService-s3-endpoint}}
+#- name: PhotoService-S3-Final-Release-Bucekt
+#  type: s3
+  #source:
+    #bucket: s3-bucket-releases
+    #regexp: photo-service-(.*).jar
+    #access_key_id: s3-access-key-id
+    #secret_access_key: 3-secret-access-key
+    #endpoint: 3-endpoint
+
+
 jobs:
 - name: Build-PhotoService
   serial: true
@@ -30,6 +48,10 @@ jobs:
 
   - task: Build-PhotoService
     file: PhotoServiceRepo1/photo-service/BuildPhotoService.yml
+
+  - put: PhotoService-S3-Test-Release-Bucket
+    params:
+      file: photo-service-*.jar
 
   - put: PhotoService-CF-Deploy
     params:
