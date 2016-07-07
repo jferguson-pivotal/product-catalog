@@ -14,3 +14,5 @@ cf-username: nathan@pivotal.io
 cf-password: johndoex3
 cf-organization: Northeast / Canada
 cf-space: rJag
+
+### be extra careful to add this to your .gitignore.. and not push it to github..
